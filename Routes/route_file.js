@@ -1,6 +1,6 @@
 const express = require("express")
-const router = express.Router()
-const Route_location = require("../Models/route_location")
+const router = express.Router() // need to import for router
+const Route_location = require("../Models/route_location") // is the schema location
 
 
 router.post('/createnew', async (req, res) => {
@@ -20,6 +20,15 @@ router.post('/createnew', async (req, res) => {
 })
 
 
+// This code is for adding a new element with format given in models folder: route_location
+
+// POST request: localhost5000/api/route_location/createnew
+// and body data: {
+//     "name_body": "abc",
+//     "rollno_body": "123"
+// }
+
+
 router.get('/fetchdata', async (req, res) => {
     try {
         const data = await Route_location.find()
@@ -30,6 +39,10 @@ router.get('/fetchdata', async (req, res) => {
     }
 
 })
+
+//fetch data, fetches all the data present in database, in the array format 
+// GET request: localhost:5000/api/route_location/fetchdata
+
 
 
 
@@ -58,6 +71,11 @@ router.put("/updatedata/:id",
     }
 )
 
+// this is the put request to change the data having 648bc9a0d3672b20c9e08428 as ID :  localhost:5000/api/route_location/updatedata/648bc9a0d3672b20c9e08428
+// the body data is: {
+    // "name_body": "abc",
+    // "rollno_body": "456"
+//   }
 
 
 
@@ -85,7 +103,9 @@ router.delete("/deletenote/:id", async (req, res) => {
 
 })
 
+//will delete the data with delete request 648bc9a0d3672b20c9e08428 as ID : localhost:5000/api/route_location/deletenote/648bc9a0d3672b20c9e08428
 
 
 
-module.exports = router
+
+module.exports = router //export function, necessary
